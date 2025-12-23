@@ -5,6 +5,7 @@
 // Google Apps Script 웹앱 URL (배포 후 여기에 URL을 입력하세요)
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyrk_1M225lhTVasCteFrPNhVKYKjwhYCNZs2n-ZGGwfDP_sScMI2t0qJgKHAcG7yLP/exec';
 
+
 // DOM이 로드된 후 실행
 document.addEventListener('DOMContentLoaded', function() {
     initializeDatePicker();
