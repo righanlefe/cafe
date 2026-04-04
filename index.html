@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>부릉제주 | 제주 원데이 버스 투어</title>
+<meta name="description" content="부릉제주 제주 원데이 버스 투어.">
+<style>
+:root{
+  --green:#1f4d3a;
+  --green-dark:#163a2c;
+  --green-soft:#eaf5ef;
+  --kakao:#fee500;
+  --naver:#03c75a;
+  --ink:#16181d;
+  --text:#384150;
+  --muted:#6b7280;
+  --line:#e9edf2;
+  --bg:#ffffff;
+  --white:#ffffff;
+  --shadow:0 18px 50px rgba(22,24,29,.08);
+  --radius-xl:28px;
+  --radius-lg:22px;
+  --radius-md:16px;
+  --max:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Pretendard","Noto Sans KR",sans-serif;color:var(--text);background:#f9fbfa;line-height:1.6}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+button{font:inherit}
+.container{width:min(calc(100% - 32px),var(--max));margin:0 auto}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.84);backdrop-filter:blur(14px);border-bottom:1px solid rgba(233,237,242,.85)}
+.header{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:14px;font-weight:900;color:var(--ink);letter-spacing:-.03em}
+.logo-image{width:72px;height:auto;display:block;flex:0 0 auto}
+
+.logo small{display:block;color:var(--muted);font-size:11px;letter-spacing:.02em;font-weight:800}
+.nav{display:flex;align-items:center;gap:24px;font-weight:700;color:var(--muted)}
+.nav a:hover{color:var(--ink)}
+.header-actions{display:flex;align-items:center;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 20px;font-weight:800;cursor:pointer;transition:.2s ease;white-space:nowrap}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 14px 28px rgba(31,77,58,.22)}
+.btn-primary:hover{background:var(--green-dark)}
+.btn-line{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn-kakao{background:var(--kakao);color:#181600}
+.btn-naver{background:var(--naver);color:#fff}
+.mobile-menu{display:none;width:44px;height:44px;border:1px solid var(--line);background:#fff;border-radius:14px;cursor:pointer}
+.hero{padding:56px 0 28px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch}
+.hero-copy,.hero-side,.section-card,.highlight-card,.course-card,.review-card,.faq-item,.sticky-reserve,.detail-box{background:#fff;border:1px solid rgba(233,237,242,.92);box-shadow:var(--shadow);border-radius:var(--radius-xl)}
+.hero-copy{padding:42px;position:relative;overflow:hidden;background:radial-gradient(circle at top right,rgba(31,77,58,.08),transparent 28%),linear-gradient(180deg,#ffffff 0%,#f7fbf9 100%)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--green-soft);color:var(--green-dark);font-size:14px;font-weight:900;margin-bottom:16px}
+.hero h1{margin:0;font-size:clamp(38px,5vw,64px);line-height:1.06;letter-spacing:-.05em;color:var(--ink)}
+.hero p{margin:18px 0 0;font-size:18px;max-width:620px}
+.hero-points{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero-chip{padding:10px 14px;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:14px;font-weight:800;color:#4b5563}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-side{padding:20px;background:linear-gradient(180deg,#ffffff 0%,#f6faf8 100%)}
+.hero-photo{
+  position:relative;
+  min-height:320px;
+  border-radius:24px;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(0,0,0,.06),rgba(0,0,0,.1)),
+    url('4월 봄(벚꽃과 유채꽃).jpg') center/cover no-repeat;
+}
+.hero-photo::after{content:'오늘 예약 문의 가능';position:absolute;left:18px;bottom:18px;background:rgba(22,24,29,.7);color:#fff;padding:10px 14px;border-radius:999px;font-size:14px;font-weight:800}
+.side-list{display:grid;gap:10px;margin-top:14px}
+.side-item{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.side-item strong{display:block;color:var(--ink);margin-bottom:4px}
+.side-item span{font-size:14px;color:var(--muted)}
+.side-pill{padding:7px 11px;border-radius:999px;background:#eefaf3;color:#127a47;font-size:12px;font-weight:900}
+section{padding:34px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:18px}
+.section-head h2{margin:0;font-size:clamp(28px,3.2vw,42px);line-height:1.12;letter-spacing:-.04em;color:var(--ink)}
+.section-head p{margin:8px 0 0;color:var(--muted)}
+.section-card{padding:26px}
+.highlight-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.highlight-card{padding:22px;border-radius:22px}
+
+.highlight-card h3,.review-card h3{margin:0 0 8px;color:var(--ink);font-size:20px;letter-spacing:-.03em}
+.highlight-card p,.review-card p{margin:0;color:var(--text)}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.tab-btn{border:1px solid var(--line);background:#fff;color:#4b5563;padding:12px 16px;border-radius:999px;font-weight:900;cursor:pointer}
+.tab-btn.active{background:var(--green);border-color:var(--green);color:#fff;box-shadow:0 10px 24px rgba(31,77,58,.18)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+.course-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.course-card{overflow:hidden;border-radius:24px;cursor:pointer;transition:.2s ease}
+.course-card:hover{transform:translateY(-3px)}
+.course-image{aspect-ratio:16/10;background-size:cover;background-position:center}
+.course-body{padding:20px}
+.course-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.badge{padding:7px 11px;border-radius:999px;font-size:12px;font-weight:900;background:var(--green-soft);color:var(--green-dark)}
+.course-body h3{margin:0;color:var(--ink);font-size:24px;line-height:1.16;letter-spacing:-.03em}
+.course-body p{margin:10px 0 14px;font-size:15px}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.meta-pill{padding:8px 12px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);font-size:13px;font-weight:800;color:#4b5563}
+.route-list{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+.course-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.price{font-size:24px;font-weight:900;color:var(--ink);letter-spacing:-.03em}
+.price small{font-size:13px;color:var(--muted);font-weight:800;margin-left:4px}
+.sticky-reserve{padding:22px;position:sticky;top:96px;border-radius:24px;background:linear-gradient(180deg,#ffffff 0%,#f7fbf9 100%)}
+.sticky-reserve h3{margin:0 0 8px;color:var(--ink);font-size:24px;letter-spacing:-.03em}
+.reserve-note{font-size:14px;color:var(--muted);background:#fff;border:1px solid var(--line);padding:12px 14px;border-radius:16px;margin:14px 0}
+.reserve-list{display:grid;gap:10px;margin:16px 0}
+.reserve-row{display:flex;justify-content:space-between;gap:14px;font-size:14px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.reserve-actions{display:grid;gap:10px}
+.reserve-link{width:100%}
+.notice{font-size:13px;color:var(--muted);margin-top:12px}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.review-card{padding:22px;border-radius:22px}
+.stars{font-size:18px;margin-bottom:12px}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.info-card{padding:22px;border:1px solid var(--line);border-radius:22px;background:#fff}
+.info-card h3{margin:0 0 8px;color:var(--ink);font-size:20px}
+.cta-box{padding:34px;border-radius:28px;background:linear-gradient(135deg,#f0f7f4 0%,#fff 55%,#eefaf3 100%);border:1px solid var(--line);box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:20px}
+.cta-box h2{margin:0;color:var(--ink);font-size:clamp(28px,3vw,42px);line-height:1.1;letter-spacing:-.04em}
+.faq-list{display:grid;gap:12px}
+.faq-item{padding:20px 22px;border-radius:22px}
+.faq-q{display:flex;justify-content:space-between;gap:12px;align-items:center;font-weight:900;color:var(--ink);cursor:pointer}
+.faq-a{display:none;padding-top:12px;color:var(--muted);font-size:15px}
+.faq-item.active .faq-a{display:block}
+.footer{padding:34px 0 50px;color:var(--muted);font-size:14px}
+.footer-inner{border-top:1px solid var(--line);padding-top:24px;display:flex;justify-content:space-between;gap:20px}
+.detail{display:none;position:fixed;inset:0;background:rgba(10,12,16,.5);padding:20px;z-index:80;overflow:auto}
+.detail.open{display:block}
+.detail-box{max-width:860px;margin:40px auto;overflow:hidden;border-radius:28px}
+.detail-image{width:100%;height:330px;object-fit:cover}
+.detail-body{padding:26px}
+.detail-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.close-btn{border:1px solid var(--line);background:#fff;width:42px;height:42px;border-radius:14px;cursor:pointer;font-size:18px}
+.detail-body h2{margin:6px 0 10px;color:var(--ink);font-size:34px;line-height:1.1;letter-spacing:-.04em}
+.detail-desc{font-size:16px;margin-bottom:16px}
+.detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.detail-info{padding:14px 16px;border:1px solid var(--line);border-radius:18px;background:#f8fafc}
+.detail-info strong{display:block;color:var(--ink);font-size:14px;margin-bottom:4px}
+.detail-route{padding-left:18px;color:var(--muted)}
+.detail-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+@media (max-width:1080px){.hero-grid,.layout,.highlight-grid,.review-grid,.info-grid{grid-template-columns:1fr 1fr}.course-grid{grid-template-columns:1fr}.highlight-grid .highlight-card:last-child,.review-grid .review-card:last-child,.info-grid .info-card:last-child{grid-column:span 2}.layout{grid-template-columns:1fr}}
+@media (max-width:820px){.nav,.header-actions .btn-line{display:none}.mobile-menu{display:grid;place-items:center}.nav.open{display:flex;position:absolute;left:16px;right:16px;top:82px;flex-direction:column;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:var(--shadow)}.hero-grid,.highlight-grid,.review-grid,.info-grid,.footer-inner,.cta-box,.detail-grid{grid-template-columns:1fr;flex-direction:column}.course-grid{grid-template-columns:1fr}.hero-copy,.hero-side,.section-card,.sticky-reserve{padding:22px}.hero h1{font-size:42px}.highlight-grid .highlight-card:last-child,.review-grid .review-card:last-child,.info-grid .info-card:last-child{grid-column:span 1}}
+.hero-buttons{
+  display:flex;
+  gap:12px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.btn-outline{
+  padding:12px 20px;
+  border:2px solid #2e7d32;
+  color:#2e7d32;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  transition:all .2s;
+}
+
+.btn-outline:hover{
+  background:#2e7d32;
+  color:white;
+}
+
+.btn-primary{
+  padding:12px 20px;
+  background:#2e7d32;
+  color:white;
+  border-radius:999px;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  transition:all .2s;
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container header">
+    <a class="logo" href="#top" aria-label="부릉제주 홈으로 이동">
+      <img class="logo-image" src="logo.png" alt="부릉제주 로고">
+      <div>
+        부릉제주
+        <small>JEJU ONE DAY BUS TOUR</small>
+      </div>
+    </a>
+
+    <nav class="nav" id="navMenu">
+      <a href="#courses">투어 코스</a>
+      <a href="#reviews">후기</a>
+      <a href="#guide">이용 안내</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-line" href="#courses">코스 보기</a>
+      <a class="btn btn-primary" href="#reserve">예약하기</a>
+      <button class="mobile-menu" id="mobileMenuBtn" aria-label="메뉴 열기">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="hero-badge"> 제주에서 하루를 가장 알차게 즐기는 방법</div>
+        <h1>뚜벅이 여행자를 위한<br>제주 원데이 버스 투어</h1>
+        <p>비행기, 숙소 예약하고 부릉제주 예약하면 제주 여행 준비 끝 ! <br>렌터카 없이도 제주 핵심 코스를 편하게 즐길 수 있도록, 요즘 핫한 제주도 여행지만 선별한 부릉제주 원데이 투어입니다.</p>
+        
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#courses">이번 시즌 코스 보기</a>
+          <a class="btn btn-kakao" href="https://pf.kakao.com/_YOUR_CHANNEL" target="_blank" rel="noopener">카카오톡 채널 문의</a>
+          <a class="btn btn-naver" href="https://smartstore.naver.com/YOUR_STORE" target="_blank" rel="noopener">네이버 스토어 바로가기</a>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="hero-photo"></div>
+        <div class="side-list">
+          <div class="side-item">
+            <div>
+              <strong>오늘의 추천 코스(4월 제주의 봄)</strong>
+              <span>벚꽃 · 유채꽃 명소</span>
+            </div>
+            <span class="side-pill">BEST</span>
+          </div>
+          <div class="side-item">
+            <div>
+              <strong>예약 방식</strong>
+              <span>카카오톡 채널 문의 또는 네이버 스토어 예약</span>
+            </div>
+            <span class="side-pill">간편</span>
+          </div>
+          <div class="side-item">
+            <div>
+              <strong>추천 대상</strong>
+              <span>뚜벅이 여행자 · 친구끼리 · 부모님 동반 가족 여행</span>
+            </div>
+            <span class="side-pill">인기</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="highlight-grid">
+        <article class="highlight-card">
+          <h3>동선 고민 없이</h3>
+          <p>처음 제주에 와도 괜찮도록 핵심 스팟만 골라 요즘 제일 핫한 곳과 감성 카페를 함께 묶어 하루가 지루하지 않게을 놓치지 않도록 구성했습니다.</p>
+        </article>
+        <article class="highlight-card">
+          <h3>사진 잘 나오는 코스</h3>
+          <p>여행 시즌 별 제주다운 풍경과 포토 스팟을 놓치지 않도록 구성하고 시즌 별로 업데이트합니다.</p>
+        </article>
+        <article class="highlight-card">
+          <h3>편안한 이동</h3>
+          <p>운전 걱정 없이 편하게 이동하고, 여행 자체에만 집중할 수 있는 투어형 일정입니다.</p>
+        </article>
+        <article class="highlight-card">
+          <h3>혼자서도 괜찮아요</h3>
+          <p>혼자서 여행하나요 ? 혼자 온 여행객도 서로 사진도 찍어주고 같이 투어를 즐길 수 있도록 원한다면 일일 여행 친구를 매칭해드려요.(선택사항) </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="courses">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>이번 시즌 인기 투어 코스</h2>
+          <p> 제주의 봄을 가득 느낄 수 있도록 이번 시즌 여행자가 가장 많이 찾는 대표 코스를 중심으로 코스를 준비했어요. 카드를 누르면 상세 정보를 볼 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="tabs" id="seasonTabs"></div>
+        <div class="layout">
+          <div class="course-grid" id="courseGrid"></div>
+
+          <aside class="sticky-reserve" id="reserve">
+            <h3>지금 예약하기</h3>
+            <p>예약을 완료하시고 예약확정문자(알림톡)이 도착했는지 꼭 확인해주세요.</p>
+            <div class="reserve-note">여행코스 선택 → 예약 및 결제 → 예약확정문자(알림톡)수신 → 여행 2일 전 투어 유의 사항 안내 → 여행 당일 투어 출발(부릉부릉🚌)</div>
+            <div class="reserve-list">
+              <div class="reserve-row"><span>여행 일정 및 예약 문의</span><strong>카카오톡 채널</strong></div>
+              <div class="reserve-row"><span>상품 구매 및 예약</span><strong>네이버 스토어</strong></div>
+              <div class="reserve-row"><span>운영 시간</span><strong>09:00~18:00 매일 문의 가능</strong></div>
+            </div>
+            <div class="reserve-actions">
+              <a class="btn btn-kakao reserve-link" href="https://pf.kakao.com/_YOUR_CHANNEL" target="_blank" rel="noopener">카카오톡 채널로 문의하기</a>
+              <a class="btn btn-naver reserve-link" href="https://smartstore.naver.com/YOUR_STORE" target="_blank" rel="noopener">네이버 스토어 바로가기</a>
+              <a class="btn btn-line reserve-link" href="#faq">자주 묻는 질문 보기</a>
+            </div>
+            <div class="notice">※ 제주 현지 사정 및 모객 상황에 따라 <strong>2일 전까지 투어가 취소</strong> 될 수 있어요. 이러한 경우 요금은 <strong>100% 환불 됩니다.</strong></div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>여행자 후기 분위기</h2>
+          <p>실제 운영 시에는 네이버 리뷰, 카카오 문의 후기, 사진 후기를 여기에 반영하면 전환에 도움이 됩니다.</p>
+        </div>
+      </div>
+      <div class="review-grid">
+        <article class="review-card">
+          <div class="stars">★★★★★</div>
+          <h3>뚜벅이 여행자에게 최고</h3>
+          <p>렌터카 없이 제주를 이렇게 편하게 돌 수 있다는 게 가장 좋았어요. 코스도 알차고 이동이 편했습니다.</p>
+        </article>
+        <article class="review-card">
+          <div class="stars">★★★★★</div>
+          <h3>부모님 모시고 가기 좋았어요</h3>
+          <p>운전과 길찾기 그리고 일정 짜기 부담 없이 좋은 곳만 콕콕 가서 만족도가 높았습니다. 하루 일정이 알차게 진행됐어요.</p>
+        </article>
+        <article class="review-card">
+          <div class="stars">★★★★★</div>
+          <h3>사진 찍기 좋은 스팟이 많아요</h3>
+          <p>전문가가 짜 준 일정은 역시 버릴 것 없이 알찼고, 현지 기사님 가이드가 놓치는 것 없이 구석구석 구경할 수 있게 해줬어요. </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>이용 안내</h2>
+          <p>꼭 확인해 주세요.</p>
+        </div>
+      </div>
+      <div class="info-grid">
+        <article class="info-card">
+          <h3>출발 안내</h3>
+          <p>제주시 : 터미널 근방 제주시 종합경기장 주차장 내 시계탑에서 만나 출발합니다.</p>
+          <p>서귀포시 : 월드컵경기장 주차장- 천지연폭포 주차장에서 만나 출발합니다.</p>
+        </article>
+        <article class="info-card">
+          <h3>포함 / 불포함</h3>
+          <p>포함 사항 : 투어 차량 및 운전원, 방문지 입장료, 투어 안내 서비스</p>
+          <p>불포함 사항 : 투어 중 식비·음료·개인 경비는 포함되어 있지 않습니다.</p>
+        </article>
+        <article class="info-card">
+          <h3>예약 방법</h3>
+          <p>네이버 스토어에서 결제 또는 카카오톡 채널을 통해 신청하시고 입금하는 것으로 예약할 수 있어요. </p>
+          <p>농협 000-0000-0000-00 김부릉</p>
+          <p>예약확정 문자(알림톡)를 꼭 확인해주세요.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-box">
+        <div>
+          <h2>제주 여행, 더 편하고 더 알차게.<br>직접 운영하기에 믿을 수 있는 부릉제주와 함께하세요.</h2>
+          <p>항공, 숙소 예약하고 부릉제주 예약하면 제주 여행 끝 ! 제주 여행 전문 기사님과 함께하는 가볍고 스트레스 없는 제주여행 하고 싶다면 ? <br>
+               부릉제주는 예약만 받고 위탁하는 것이 아닌, 제주도 여행 컨설턴트 지금제주 여행사와 25년 이상 제주에서 관광버스를 운영하고 있는 드림고속이 직접 운영합니다.</p>
+<div class="hero-buttons">
+  <a href="https://www.dreamexpress.co.kr" target="_blank" class="btn-outline">
+    드림고속 홈페이지
+  </a>
+  <a href="https://instagram.com/jigeum.jeju/" target="_blank" class="btn-primary">
+    지금제주 인스타그램
+  </a>
+</div>
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>자주 묻는 질문</h2>
+          <p>이외에 궁금하신 사항은 언제든지 카카오톡채널로 문의 주세요.</p>
+        </div>
+      </div>
+      <div class="faq-list">
+        <article class="faq-item active">
+          <div class="faq-q">비가 와도 투어가 진행되나요?<span>＋</span></div>
+          <div class="faq-a">기본적으로 우천 시에도 진행할 수 있지만, 기상 상황에 따라 일부 코스가 조정될 수 있습니다.</div>
+        </article>
+        <article class="faq-item">
+          <div class="faq-q">혼자 신청해도 되나요?<span>＋</span></div>
+          <div class="faq-a">네. 1인 여행자도 환영합니다. 원하신다면 다른 1인 여행자와 하루동안 함께 여행할 수 있도록 매칭해드려요. 매칭을 원하시면 카카오톡채널로 신청해주세요.</div>
+        </article>
+        <article class="faq-item">
+          <div class="faq-q">출발 최소 인원 제한이 있나요?<span>＋</span></div>
+          <div class="faq-a">네, 투어의 원활한 운영을 위해 5명 미만이 모객되는 경우 투어가 취소될 수 있어요. 요금은 100% 환불됩니다. </div>
+        </article>
+<article class="faq-item">
+          <div class="faq-q">영유아의 요금은 어떻게 되나요?<span>＋</span></div>
+          <div class="faq-a">48개월 미만은 무료로 이용 가능해요. 단, 차량 내 안전을 위한 카시트는 대여하거나 직접 준비하셔야 합니다. 대여를 희망하는 경우 문의해주세요.</div>
+        </article>
+<article class="faq-item">
+          <div class="faq-q">미취학 어린이가 있는데 카시트를 대여할 수 있나요?<span>＋</span></div>
+          <div class="faq-a">만 6세(유치원)까지는 어린이 카시트를 설치하고 탑승해야합니다. 카시트는 대여하는 경우 대여료가 발생해요. 대여가 필요하신 경우 꼭 문의해주세요.</div>
+        </article>
+<article class="faq-item">
+          <div class="faq-q">반려동물과 함께 탑승할 수 있나요?<span>＋</span></div>
+          <div class="faq-a">죄송하지만 반려동물과 다른 승객들의 안전을 위하여 함께 탑승은 어렵습니다.</div>
+        </article>
+<article class="faq-item">
+          <div class="faq-q">코스에 포함된 관광지를 입장하지 않는 경우 관람료를 환불해주실 수 있나요?<span>＋</span></div>
+          <div class="faq-a">관광지의 관람료의 경우 투어가 진행되면서 모두 예약이 완료되기 때문에 입장하지 않으시더라도 환불이 불가합니다.</div>
+        </article>
+<article class="faq-item">
+          <div class="faq-q">공항에서 바로 탑승하러 오는데 캐리어 보관이 가능한가요?<span>＋</span></div>
+          <div class="faq-a">차량 내 적재함에 캐리어 보관이 가능합니다. 다만 보관한 캐리어의 파손에 대해서는 책임지지 않는 점 꼭 유의해주시기 바랍니다.</div>
+        </article>
+<article class="faq-item">
+          <div class="faq-q">중간에 합류하거나 또는 중간에 취소할 수 있나요?<span>＋</span></div>
+          <div class="faq-a">시간에 맞춰 차량(관람지 주차장 등 정차지)으로 찾아오시는 경우 중간 합류가 가능합니다. 중간에 투어를 중단하고 개별적으로 움직이시는 경우 원활한 투어 진행을 위해 기사님께 알려주시기 바라며, 중간에 중단하더라도 투어 비용의 부분환불은 어렵다는 점 유의바랍니다.</div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>
+      <strong style="color:#16181d;">지금제주와 드림고속이 함께하는 원데이 투어 "부릉제주"</strong><br>
+      지금제주 741-11-02196<br> 드림고속 616-81-28909<br>
+      대표 : 고민혁
+    </div>
+    <div>
+     <br>
+     연락처 : 010-2486-2941<br>
+     이메일 : jigeumjj@naver.com
+    </div>
+  </div>
+</footer>
+
+<div class="detail" id="detailModal">
+  <div class="detail-box">
+    <img class="detail-image" id="detailImage" alt="투어 이미지">
+    <div class="detail-body">
+      <div class="detail-top">
+        <div>
+          <div class="course-meta" id="detailBadges"></div>
+          <h2 id="detailTitle"></h2>
+        </div>
+        <button class="close-btn" type="button" id="closeDetailBtn">✕</button>
+      </div>
+      <p class="detail-desc" id="detailDesc"></p>
+      <div class="detail-grid">
+        <div class="detail-info"><strong>소요 시간</strong><span id="detailTime"></span></div>
+        <div class="detail-info"><strong>추천 대상</strong><span id="detailTarget"></span></div>
+        <div class="detail-info"><strong>출발 지역</strong><span id="detailStart"></span></div>
+        <div class="detail-info"><strong>가격</strong><span id="detailPrice"></span></div>
+      </div>
+      <strong style="color:#16181d;display:block;margin-bottom:8px;">주요 경유지</strong>
+      <ul class="detail-route" id="detailRoute"></ul>
+      <div class="detail-actions">
+        <a class="btn btn-kakao" href="https://pf.kakao.com/_YOUR_CHANNEL" target="_blank" rel="noopener">카카오톡으로 문의하기</a>
+        <a class="btn btn-naver" href="https://smartstore.naver.com/YOUR_STORE" target="_blank" rel="noopener">네이버 스토어 보기</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const seasonData = {
+  spring: {
+  label: '봄',
+  items: [
+    {
+      title: '동부 벚꽃&유채꽃 스팟 투어',
+      desc: '유채꽃 절정 ! 성산일출봉과 녹산로, 감성 카페와 로컬 시장까지 제주 동부의 벚꽃과 유채꽃 포인트를 하루에 담은 코스입니다.',
+      price: '39,000',
+      badges: ['BEST', '봄 추천'],
+      duration: '약 8시간',
+      target: '봄을 맞은 제주의 유채꽃과 벚꽃 포토스팟을 놓치기 싫은 분',
+      start: '제주시권 출발',
+      meta: ['성산권', '포토 스팟', '벚꽃', '유채꽃'],
+      route: ['제주시 출발(09:00)', '성산일출봉 유채꽃밭(10:00~11:00)', '광치기 해변 구경 및 자율식사(12:00~13:00)', '동화마을 스타벅스 리저브, 지브리카페(14:00~15:00)', '녹산로(15:30~16:30)'],
+      image: '봄 동쪽 성산일출봉 유채꽃.png'
+    },
+    {
+      title: '서쪽 힐링 바다 투어',
+      desc: '협재와 애월, 노을 포인트를 중심으로 바다와 여유를 즐기고 싶은 여행자에게 어울리는 서쪽 코스입니다.',
+      price: '42,000',
+      badges: ['인기', '바다 코스'],
+      duration: '약 8시간',
+      target: '친구·커플 여행',
+      start: '제주시권 출발',
+      meta: ['협재', '애월', '노을'],
+      route: ['제주시 출발', '협재해변', '금능', '애월 해안도로', '노을 포인트'],
+      image: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
+      title: '오름 & 카페 힐링 투어',
+      desc: '가벼운 오름 산책과 브런치, 감성 카페를 묶어 여행의 피로감은 줄이고 분위기는 높인 일정입니다.',
+      price: '36,000',
+      badges: ['추천', '가벼운 일정'],
+      duration: '약 7시간',
+      target: '가볍게 즐기고 싶은 여행자',
+      start: '제주시권 출발',
+      meta: ['오름', '브런치', '감성'],
+      route: ['제주시 출발', '오름 산책', '브런치', '감성 카페', '해안 산책'],
+      image: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80'
+    }
+  ]
+},
+  
+};
+
+const seasonTabs = document.getElementById('seasonTabs');
+const courseGrid = document.getElementById('courseGrid');
+const detailModal = document.getElementById('detailModal');
+const closeDetailBtn = document.getElementById('closeDetailBtn');
+const navMenu = document.getElementById('navMenu');
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+let currentSeason = 'spring';
+
+function renderTabs(){
+  seasonTabs.innerHTML = Object.entries(seasonData).map(([key, value]) => {
+    return `<button class="tab-btn ${key === currentSeason ? 'active' : ''}" data-season="${key}">${value.label}</button>`;
+  }).join('');
+}
+
+function renderCourses(){
+  const items = seasonData[currentSeason].items;
+  courseGrid.innerHTML = items.map((item, index) => `
+    <article class="course-card" data-index="${index}">
+      <div class="course-image" style="background-image:url('${item.image}')"></div>
+      <div class="course-body">
+        <div class="course-meta">${item.badges.map(tag => `<span class="badge">${tag}</span>`).join('')}</div>
+        <h3>${item.title}</h3>
+        <p>${item.desc}</p>
+        <div class="meta-row">${item.meta.map(meta => `<span class="meta-pill">${meta}</span>`).join('')}</div>
+        <ul class="route-list">${item.route.map(stop => `<li>${stop}</li>`).join('')}</ul>
+        <div class="course-bottom">
+          <div class="price">₩${item.price}<small>/ 1인</small></div>
+          <button class="btn btn-line" type="button">상세 보기</button>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+function openDetail(index){
+  const item = seasonData[currentSeason].items[index];
+  document.getElementById('detailImage').src = item.image;
+  document.getElementById('detailTitle').innerText = item.title;
+  document.getElementById('detailDesc').innerText = item.desc;
+  document.getElementById('detailTime').innerText = item.duration;
+  document.getElementById('detailTarget').innerText = item.target;
+  document.getElementById('detailStart').innerText = item.start;
+  document.getElementById('detailPrice').innerText = `₩${item.price} / 1인`;
+  document.getElementById('detailBadges').innerHTML = item.badges.map(tag => `<span class="badge">${tag}</span>`).join('');
+  document.getElementById('detailRoute').innerHTML = item.route.map(stop => `<li>${stop}</li>`).join('');
+  detailModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDetail(){
+  detailModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+seasonTabs.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-season]');
+  if(!btn) return;
+  currentSeason = btn.dataset.season;
+  renderTabs();
+  renderCourses();
+});
+
+courseGrid.addEventListener('click', (e) => {
+  const card = e.target.closest('[data-index]');
+  if(!card) return;
+  openDetail(Number(card.dataset.index));
+});
+
+closeDetailBtn.addEventListener('click', closeDetail);
+detailModal.addEventListener('click', (e) => {
+  if(e.target === detailModal) closeDetail();
+});
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    q.parentElement.classList.toggle('active');
+  });
+});
+
+mobileMenuBtn.addEventListener('click', () => {
+  navMenu.classList.toggle('open');
+});
+
+renderTabs();
+renderCourses();
+</script>
+</body>
+</html>
